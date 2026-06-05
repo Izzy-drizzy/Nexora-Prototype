@@ -1,26 +1,211 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
+/* ─────────────────────────────────────────────
+   Nexora Design System — Token Bridge
+   Maps CSS variables → Tailwind utility classes
+───────────────────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  /* Typography */
+  --font-sans: var(--font-plus-jakarta-sans);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-plus-jakarta-sans);
+
+  /* Core semantic surfaces */
+  --color-background:    var(--background);
+  --color-foreground:    var(--foreground);
+  --color-card:          var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover:       var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  /* Brand */
+  --color-primary:       var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  /* Secondary / muted */
+  --color-secondary:     var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted:         var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  /* Accent (teal — AI / data elements) */
+  --color-accent:        var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  /* Status */
+  --color-destructive:   var(--destructive);
+
+  /* Chrome */
+  --color-border:        var(--border);
+  --color-input:         var(--input);
+  --color-ring:          var(--ring);
+
+  /* Charts */
+  --color-chart-1:       var(--chart-1);
+  --color-chart-2:       var(--chart-2);
+  --color-chart-3:       var(--chart-3);
+  --color-chart-4:       var(--chart-4);
+  --color-chart-5:       var(--chart-5);
+
+  /* Sidebar */
+  --color-sidebar:                   var(--sidebar);
+  --color-sidebar-foreground:        var(--sidebar-foreground);
+  --color-sidebar-primary:           var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent:            var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border:            var(--sidebar-border);
+  --color-sidebar-ring:              var(--sidebar-ring);
+
+  /* AI Score semantic tokens */
+  --color-score-high:    var(--score-high);
+  --color-score-high-bg: var(--score-high-bg);
+  --color-score-mid:     var(--score-mid);
+  --color-score-mid-bg:  var(--score-mid-bg);
+  --color-score-low:     var(--score-low);
+  --color-score-low-bg:  var(--score-low-bg);
+
+  /* Pipeline stage tokens */
+  --color-stage-new:        var(--stage-new);
+  --color-stage-new-bg:     var(--stage-new-bg);
+  --color-stage-screening:  var(--stage-screening);
+  --color-stage-screening-bg: var(--stage-screening-bg);
+  --color-stage-interview:  var(--stage-interview);
+  --color-stage-interview-bg: var(--stage-interview-bg);
+  --color-stage-offer:      var(--stage-offer);
+  --color-stage-offer-bg:   var(--stage-offer-bg);
+  --color-stage-hired:      var(--stage-hired);
+  --color-stage-hired-bg:   var(--stage-hired-bg);
+  --color-stage-rejected:   var(--stage-rejected);
+  --color-stage-rejected-bg: var(--stage-rejected-bg);
+
+  /* Border radius scale
+     Base: 6px (0.375rem) — components
+     Inputs:  4px via radius-sm
+     Cards:  12px via radius-xl             */
+  --radius-sm:  calc(var(--radius) * 0.667); /* ~4px  — inputs */
+  --radius-md:  var(--radius);               /* 6px   — components */
+  --radius-lg:  calc(var(--radius) * 1.333); /* ~8px  — modals */
+  --radius-xl:  calc(var(--radius) * 2);     /* 12px  — cards */
+  --radius-2xl: calc(var(--radius) * 2.667); /* ~16px — sheets */
+  --radius-full: 9999px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ─────────────────────────────────────────────
+   Light Mode — Nexora Design Tokens
+───────────────────────────────────────────── */
+:root {
+  /* Base surfaces */
+  --background:             oklch(0.982 0.003 247.9);   /* slate-50 warm */
+  --foreground:             oklch(0.208 0.042 264.7);   /* slate-900 */
+
+  --card:                   oklch(1 0 0);               /* white */
+  --card-foreground:        oklch(0.208 0.042 264.7);
+
+  --popover:                oklch(1 0 0);
+  --popover-foreground:     oklch(0.208 0.042 264.7);
+
+  /* Brand — Deep Indigo */
+  --primary:                oklch(0.546 0.245 264.4);   /* indigo-600 #4F46E5 */
+  --primary-foreground:     oklch(1 0 0);
+
+  /* Secondary — Indigo tint */
+  --secondary:              oklch(0.962 0.018 272.3);   /* indigo-50 */
+  --secondary-foreground:   oklch(0.368 0.147 264.4);   /* indigo-900 */
+
+  /* Muted */
+  --muted:                  oklch(0.968 0.007 247.9);   /* slate-100 */
+  --muted-foreground:       oklch(0.554 0.046 257.4);   /* slate-500 */
+
+  /* Accent — Teal (AI / data elements) */
+  --accent:                 oklch(0.600 0.118 184.7);   /* teal-600 */
+  --accent-foreground:      oklch(1 0 0);
+
+  /* Status */
+  --destructive:            oklch(0.577 0.245 27.3);    /* red-600 */
+
+  /* Chrome */
+  --border:                 oklch(0.929 0.013 255.5);   /* slate-200 */
+  --input:                  oklch(0.929 0.013 255.5);
+  --ring:                   oklch(0.719 0.143 272.8);   /* indigo-400 */
+
+  /* Charts */
+  --chart-1:                oklch(0.546 0.245 264.4);   /* indigo-600  — primary */
+  --chart-2:                oklch(0.600 0.118 184.7);   /* teal-600    — accent  */
+  --chart-3:                oklch(0.606 0.194 293.5);   /* violet-500  */
+  --chart-4:                oklch(0.769 0.188 70.1);    /* amber-500   */
+  --chart-5:                oklch(0.645 0.246 16.4);    /* rose-500    */
+
+  /* Sidebar */
+  --sidebar:                oklch(1 0 0);
+  --sidebar-foreground:     oklch(0.442 0.042 257.3);   /* slate-600 */
+  --sidebar-primary:        oklch(0.546 0.245 264.4);   /* indigo-600 */
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent:         oklch(0.962 0.018 272.3);   /* indigo-50  */
+  --sidebar-accent-foreground: oklch(0.490 0.218 264.4); /* indigo-700 */
+  --sidebar-border:         oklch(0.929 0.013 255.5);   /* slate-200  */
+  --sidebar-ring:           oklch(0.719 0.143 272.8);
+
+  /* AI Score badges (inline pills) */
+  --score-high:             oklch(0.527 0.154 150.1);   /* green-700  ≥80 */
+  --score-high-bg:          oklch(0.962 0.044 156.7);   /* green-50   */
+  --score-mid:              oklch(0.554 0.135 66.4);    /* amber-700  60–79 */
+  --score-mid-bg:           oklch(0.987 0.022 95.3);    /* amber-50   */
+  --score-low:              oklch(0.577 0.245 27.3);    /* red-600    <60  */
+  --score-low-bg:           oklch(0.971 0.013 17.4);    /* red-50     */
+
+  /* Pipeline stage pills */
+  --stage-new:              oklch(0.442 0.042 257.3);   /* slate-600  */
+  --stage-new-bg:           oklch(0.968 0.007 247.9);   /* slate-100  */
+  --stage-screening:        oklch(0.554 0.135 66.4);    /* amber-700  */
+  --stage-screening-bg:     oklch(0.987 0.022 95.3);    /* amber-50   */
+  --stage-interview:        oklch(0.490 0.218 264.4);   /* indigo-700 */
+  --stage-interview-bg:     oklch(0.962 0.018 272.3);   /* indigo-50  */
+  --stage-offer:            oklch(0.511 0.096 186.4);   /* teal-700   */
+  --stage-offer-bg:         oklch(0.984 0.014 180.7);   /* teal-50    */
+  --stage-hired:            oklch(0.527 0.154 150.1);   /* green-700  */
+  --stage-hired-bg:         oklch(0.962 0.044 156.7);   /* green-50   */
+  --stage-rejected:         oklch(0.577 0.245 27.3);    /* red-600    */
+  --stage-rejected-bg:      oklch(0.971 0.013 17.4);    /* red-50     */
+
+  /* Base border radius — 6px */
+  --radius: 0.375rem;
+}
+
+/* ─────────────────────────────────────────────
+   Base styles
+───────────────────────────────────────────── */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─────────────────────────────────────────────
+   Nexora utility classes
+   Convenience shorthands used across screens
+───────────────────────────────────────────── */
+@layer utilities {
+  /* AI score pill variants */
+  .score-high  { color: var(--score-high);  background: var(--score-high-bg); }
+  .score-mid   { color: var(--score-mid);   background: var(--score-mid-bg);  }
+  .score-low   { color: var(--score-low);   background: var(--score-low-bg);  }
+
+  /* Pipeline stage pill variants */
+  .stage-new        { color: var(--stage-new);        background: var(--stage-new-bg);        }
+  .stage-screening  { color: var(--stage-screening);  background: var(--stage-screening-bg);  }
+  .stage-interview  { color: var(--stage-interview);  background: var(--stage-interview-bg);  }
+  .stage-offer      { color: var(--stage-offer);      background: var(--stage-offer-bg);      }
+  .stage-hired      { color: var(--stage-hired);      background: var(--stage-hired-bg);      }
+  .stage-rejected   { color: var(--stage-rejected);   background: var(--stage-rejected-bg);   }
 }
