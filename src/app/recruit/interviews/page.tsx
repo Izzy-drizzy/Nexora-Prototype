@@ -48,16 +48,16 @@ export default function InterviewsPage() {
   const totalToday = SCHEDULE[0].interviews.length;
 
   return (
-    <div className="px-8 py-8 max-w-4xl mx-auto space-y-6">
+    <div className="px-4 py-6 sm:px-8 sm:py-8 max-w-4xl mx-auto space-y-6">
       {/* Header */}
-      <div className="flex items-start justify-between">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-foreground tracking-tight">Interviews</h1>
           <p className="text-sm text-muted-foreground mt-0.5">
             {totalToday} scheduled today · Week of 11–15 Jun
           </p>
         </div>
-        <Button size="sm" className="h-9 gap-2">
+        <Button size="sm" className="h-9 gap-2 w-fit">
           <CalendarDays className="w-4 h-4" />
           Schedule new
         </Button>
@@ -83,7 +83,7 @@ export default function InterviewsPage() {
                 return (
                   <Card key={interview.id} className="hover:border-primary/30 transition-colors">
                     <CardContent className="p-4">
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-3 flex-wrap sm:flex-nowrap sm:gap-4">
                         {/* Time */}
                         <div className="w-16 flex-shrink-0 text-center">
                           <p className="text-lg font-bold text-foreground tabular-nums leading-none">{interview.time}</p>

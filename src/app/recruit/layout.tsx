@@ -1,4 +1,4 @@
-import { RecruiterSidebar } from "@/components/recruiter/sidebar";
+import { RecruiterSidebar, MobileHeader } from "@/components/recruiter/sidebar";
 
 export default function RecruiterLayout({
   children,
@@ -8,9 +8,12 @@ export default function RecruiterLayout({
   return (
     <div className="flex min-h-screen bg-background">
       <RecruiterSidebar />
-      <main className="flex-1 min-w-0 overflow-y-auto">
-        {children}
-      </main>
+      <div className="flex-1 min-w-0 flex flex-col">
+        <MobileHeader />
+        <main className="flex-1 min-w-0 overflow-y-auto">
+          {children}
+        </main>
+      </div>
     </div>
   );
 }

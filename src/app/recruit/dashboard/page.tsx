@@ -97,7 +97,7 @@ function PipelineBar() {
 
 function KpiCards() {
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
       {KPI_CARDS.map((kpi) => (
         <Card key={kpi.id}>
           <CardContent className="pt-5 pb-4 px-5">
@@ -152,7 +152,7 @@ function TodaysInterviews() {
           {TODAYS_INTERVIEWS.map((interview) => (
             <div
               key={interview.id}
-              className="flex items-center gap-3 px-5 py-3 hover:bg-muted/40 transition-colors"
+              className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-3 hover:bg-muted/40 transition-colors"
             >
               <Avatar className="w-8 h-8 flex-shrink-0">
                 <AvatarFallback className="text-xs font-semibold bg-secondary text-primary">
@@ -176,14 +176,14 @@ function TodaysInterviews() {
 
               <Badge
                 variant="secondary"
-                className={`text-xs font-medium flex-shrink-0 ${FORMAT_BADGE[interview.format] ?? ""}`}
+                className={`hidden sm:inline-flex text-xs font-medium flex-shrink-0 ${FORMAT_BADGE[interview.format] ?? ""}`}
               >
                 {interview.format}{interview.round ? ` ${interview.round}` : ""}
               </Badge>
 
               <Link
                 href="/recruit/candidates"
-                className="inline-flex items-center h-7 px-2 text-xs font-medium text-primary hover:bg-accent/10 rounded-md transition-colors flex-shrink-0"
+                className="hidden sm:inline-flex items-center h-7 px-2 text-xs font-medium text-primary hover:bg-accent/10 rounded-md transition-colors flex-shrink-0"
               >
                 View
               </Link>
@@ -258,7 +258,7 @@ function UrgentActions() {
 
 export default function DashboardPage() {
   return (
-    <div className="px-8 py-8 max-w-5xl mx-auto space-y-6">
+    <div className="px-4 py-6 sm:px-8 sm:py-8 max-w-5xl mx-auto space-y-6">
       {/* Header */}
       <div className="flex items-start justify-between">
         <div>
@@ -280,11 +280,11 @@ export default function DashboardPage() {
       <KpiCards />
 
       {/* Bottom grid: interviews + urgent */}
-      <div className="grid grid-cols-5 gap-4">
-        <div className="col-span-3">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+        <div className="lg:col-span-3">
           <TodaysInterviews />
         </div>
-        <div className="col-span-2">
+        <div className="lg:col-span-2">
           <UrgentActions />
         </div>
       </div>

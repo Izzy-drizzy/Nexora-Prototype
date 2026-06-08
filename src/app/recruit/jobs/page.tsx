@@ -57,16 +57,16 @@ export default function JobsPage() {
   });
 
   return (
-    <div className="px-8 py-8 max-w-5xl mx-auto space-y-6">
+    <div className="px-4 py-6 sm:px-8 sm:py-8 max-w-5xl mx-auto space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-foreground tracking-tight">Job Postings</h1>
           <p className="text-sm text-muted-foreground mt-0.5">
             {jobs.filter((j) => j.status === "active").length} active · {jobs.filter((j) => j.status === "paused").length} paused · {jobs.filter((j) => j.status === "closed").length} closed this quarter
           </p>
         </div>
-        <Button className="gap-2 h-9" onClick={() => setPostJobOpen(true)}>
+        <Button className="gap-2 h-9 w-fit" onClick={() => setPostJobOpen(true)}>
           <Plus className="w-4 h-4" />
           Post a job
         </Button>
@@ -75,15 +75,15 @@ export default function JobsPage() {
       <Separator />
 
       {/* Tabs + search row */}
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         {/* Status tabs */}
-        <div className="flex items-center gap-1 bg-muted rounded-lg p-1">
+        <div className="flex items-center gap-1 bg-muted rounded-lg p-1 flex-wrap">
           {STATUS_TABS.map((tab) => (
             <button
               key={tab.value}
               onClick={() => setActiveTab(tab.value)}
               className={cn(
-                "px-3 py-1.5 rounded-md text-sm font-medium transition-colors",
+                "px-3 py-1.5 rounded-md text-sm font-medium transition-colors whitespace-nowrap",
                 activeTab === tab.value
                   ? "bg-white text-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground"
@@ -96,21 +96,24 @@ export default function JobsPage() {
 
         {/* Search + filter */}
         <div className="flex items-center gap-2">
-          <Input
-            placeholder="Search roles, departments…"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="h-9 w-56 text-sm"
-          />
+          <div className="relative flex-1 sm:flex-none">
+            <Input
+              placeholder="Search roles, departments…"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="h-9 w-full sm:w-56 text-sm"
+            />
+          </div>
           <Button variant="outline" size="sm" className="h-9 gap-2">
             <SlidersHorizontal className="w-3.5 h-3.5" />
-            Filter
+            <span className="hidden sm:inline">Filter</span>
           </Button>
         </div>
       </div>
 
       {/* Table */}
-      <div className="rounded-xl border border-border bg-card overflow-hidden">
+      <div className="overflow-x-auto rounded-xl border border-border bg-card">
+        <div className="min-w-[800px]">
         {/* Table header */}
         <div className="grid grid-cols-[2fr_1.2fr_1fr_80px_80px_100px_90px_80px] gap-4 px-5 py-3 bg-muted/50 border-b border-border">
           {["Role", "Department", "Location", "Applied", "In pipeline", "Posted", "Status", ""].map(
@@ -182,6 +185,7 @@ export default function JobsPage() {
               </Link>
             </div>
           ))}
+        </div>
         </div>
       </div>
 

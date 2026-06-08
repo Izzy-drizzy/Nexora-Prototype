@@ -106,7 +106,7 @@ export default function CandidateListPage() {
   const allSelected = filtered.length > 0 && selected.size === filtered.length;
 
   return (
-    <div className="px-8 py-8 max-w-5xl mx-auto space-y-6">
+    <div className="px-4 py-6 sm:px-8 sm:py-8 max-w-5xl mx-auto space-y-6">
       {/* Breadcrumb + header */}
       <div>
         <div className="flex items-center gap-1.5 text-sm text-muted-foreground mb-3">

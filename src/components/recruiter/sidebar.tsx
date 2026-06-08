@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -12,10 +13,12 @@ import {
   Settings,
   Building2,
   LogOut,
+  Menu,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const NAV = [
   {
@@ -42,13 +45,11 @@ const NAV = [
   },
 ];
 
-export function RecruiterSidebar() {
-  const pathname = usePathname();
-
+function NavContent({ pathname, onNavClick }: { pathname: string; onNavClick?: () => void }) {
   return (
-    <aside className="w-60 flex-shrink-0 flex flex-col h-screen sticky top-0 bg-sidebar border-r border-sidebar-border">
+    <>
       {/* Logo */}
-      <div className="h-16 flex items-center gap-2.5 px-5 border-b border-sidebar-border">
+      <div className="h-16 flex items-center gap-2.5 px-5 border-b border-sidebar-border flex-shrink-0">
         <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center flex-shrink-0">
           <Building2 className="w-4 h-4 text-white" />
         </div>
@@ -72,6 +73,7 @@ export function RecruiterSidebar() {
                   <li key={href}>
                     <Link
                       href={href}
+                      onClick={onNavClick}
                       className={cn(
                         "flex items-center gap-2.5 px-2.5 py-2 rounded-md text-sm font-medium transition-colors",
                         active
@@ -104,6 +106,45 @@ export function RecruiterSidebar() {
           <LogOut className="w-3.5 h-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
         </div>
       </div>
+    </>
+  );
+}
+
+export function RecruiterSidebar() {
+  const pathname = usePathname();
+
+  return (
+    <aside className="w-60 flex-shrink-0 hidden md:flex flex-col h-screen sticky top-0 bg-sidebar border-r border-sidebar-border">
+      <NavContent pathname={pathname} />
     </aside>
+  );
+}
+
+export function MobileHeader() {
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
+
+  return (
+    <header className="flex md:hidden items-center gap-3 px-4 h-14 border-b border-border bg-sidebar sticky top-0 z-40 flex-shrink-0">
+      <Sheet open={open} onOpenChange={setOpen}>
+        <SheetTrigger
+          className="p-1.5 rounded-md hover:bg-muted/60 transition-colors"
+          aria-label="Open navigation"
+        >
+          <Menu className="w-5 h-5 text-foreground" />
+        </SheetTrigger>
+        <SheetContent side="left" className="w-60 p-0 bg-sidebar border-sidebar-border flex flex-col">
+          <NavContent pathname={pathname} onNavClick={() => setOpen(false)} />
+        </SheetContent>
+      </Sheet>
+
+      <Link href="/recruit/dashboard" className="flex items-center gap-2">
+        <div className="w-7 h-7 rounded-md bg-primary flex items-center justify-center flex-shrink-0">
+          <Building2 className="w-3.5 h-3.5 text-white" />
+        </div>
+        <span className="text-sm font-bold text-foreground">Nexora</span>
+        <span className="text-[10px] text-muted-foreground font-medium tracking-wide uppercase ml-0.5">Recruit</span>
+      </Link>
+    </header>
   );
 }

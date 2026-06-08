@@ -95,16 +95,16 @@ export default function CandidatesPage() {
   const allSelected = filtered.length > 0 && selected.size === filtered.length;
 
   return (
-    <div className="px-8 py-8 max-w-5xl mx-auto space-y-6">
+    <div className="px-4 py-6 sm:px-8 sm:py-8 max-w-5xl mx-auto space-y-6">
       {/* Header */}
-      <div className="flex items-start justify-between">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-foreground tracking-tight">Candidates</h1>
           <p className="text-sm text-muted-foreground mt-0.5">
             92 total across all active roles · AI screening active
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-shrink-0">
           <Button variant="outline" size="sm" className="h-9 gap-2">
             <Download className="w-3.5 h-3.5" />
             Export CSV
@@ -119,7 +119,7 @@ export default function CandidatesPage() {
       <Separator />
 
       {/* Filters row */}
-      <div className="flex items-center justify-between gap-4 flex-wrap">
+      <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-1 bg-muted rounded-lg p-1 flex-wrap">
           {STAGE_FILTERS.map((f) => (
             <button
@@ -138,22 +138,22 @@ export default function CandidatesPage() {
         </div>
 
         <div className="flex items-center gap-2">
-          <div className="relative">
+          <div className="relative flex-1 sm:flex-none">
             <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-muted-foreground" />
             <Input
               placeholder="Search name, role, location…"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-9 pl-8 w-60 text-sm"
+              className="h-9 pl-8 w-full sm:w-60 text-sm"
             />
           </div>
           <Button variant="outline" size="sm" className="h-9 gap-2">
             <ArrowUpDown className="w-3.5 h-3.5" />
-            AI Score
+            <span className="hidden sm:inline">AI Score</span>
           </Button>
           <Button variant="outline" size="sm" className="h-9 gap-2">
             <SlidersHorizontal className="w-3.5 h-3.5" />
-            Filter
+            <span className="hidden sm:inline">Filter</span>
           </Button>
         </div>
       </div>
@@ -172,7 +172,8 @@ export default function CandidatesPage() {
       )}
 
       {/* Table */}
-      <div className="rounded-xl border border-border bg-card overflow-hidden">
+      <div className="overflow-x-auto rounded-xl border border-border bg-card">
+        <div className="min-w-[860px]">
         {/* Header */}
         <div className="grid grid-cols-[32px_2fr_1.2fr_100px_100px_130px_160px_60px] gap-3 px-5 py-3 bg-muted/50 border-b border-border items-center">
           <input
@@ -265,6 +266,7 @@ export default function CandidatesPage() {
               </div>
             ))
           )}
+        </div>
         </div>
       </div>
 

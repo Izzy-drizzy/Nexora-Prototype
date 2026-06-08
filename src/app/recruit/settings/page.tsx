@@ -53,7 +53,7 @@ export default function SettingsPage() {
   const [title, setTitle] = useState("Talent Acquisition Specialist");
 
   return (
-    <div className="px-8 py-8 max-w-4xl mx-auto space-y-6">
+    <div className="px-4 py-6 sm:px-8 sm:py-8 max-w-4xl mx-auto space-y-6">
       <div>
         <h1 className="text-2xl font-bold text-foreground tracking-tight">Settings</h1>
         <p className="text-sm text-muted-foreground mt-0.5">Manage your account, notifications, and platform preferences</p>

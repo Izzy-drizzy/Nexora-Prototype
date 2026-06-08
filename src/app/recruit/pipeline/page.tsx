@@ -240,7 +240,7 @@ export default function PipelinePage() {
   const total = allCards.length;
 
   return (
-    <div className="px-8 py-8 space-y-6 min-h-screen">
+    <div className="px-4 py-6 sm:px-8 sm:py-8 space-y-6 min-h-screen">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -271,7 +271,7 @@ export default function PipelinePage() {
           </button>
         ))}
 
-        <div className="ml-auto flex items-center gap-3 text-xs text-muted-foreground">
+        <div className="hidden sm:flex ml-auto items-center gap-3 text-xs text-muted-foreground">
           <span className="flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-slate-300" /> Applied (48)
           </span>

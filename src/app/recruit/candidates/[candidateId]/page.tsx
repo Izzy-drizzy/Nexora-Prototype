@@ -103,7 +103,7 @@ export default function ApplicantProfilePage() {
   }
 
   return (
-    <div className="px-8 py-8 max-w-4xl mx-auto space-y-6">
+    <div className="px-4 py-6 sm:px-8 sm:py-8 max-w-4xl mx-auto space-y-6">
       {/* Breadcrumb */}
       <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
         <Link href="/recruit/jobs" className="hover:text-primary transition-colors">Jobs</Link>
@@ -118,7 +118,7 @@ export default function ApplicantProfilePage() {
       {/* Header card */}
       <Card>
         <CardContent className="p-6">
-          <div className="flex items-start gap-5">
+          <div className="flex items-start gap-4 flex-wrap sm:flex-nowrap">
             <Avatar className="w-16 h-16 flex-shrink-0">
               <AvatarFallback className="text-xl font-bold bg-secondary text-primary">
                 {candidate.initials}
@@ -244,7 +244,7 @@ export default function ApplicantProfilePage() {
 
       {/* Tabs */}
       <Tabs value={activeTab} onValueChange={setActiveTab}>
-        <TabsList className="h-9 bg-muted p-1">
+        <TabsList className="h-9 bg-muted p-1 w-full overflow-x-auto flex">
           {["timeline", "cv-skills", "scorecards", "messages", "notes"].map((tab) => (
             <TabsTrigger key={tab} value={tab} className="text-xs capitalize px-3">
               {tab.replace("-", " & ")}

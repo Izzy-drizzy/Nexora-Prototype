@@ -130,7 +130,7 @@ export default function AnalyticsPage() {
   const [activeBar, setActiveBar] = useState<number | null>(null);
 
   return (
-    <div className="px-8 py-8 max-w-5xl mx-auto space-y-6">
+    <div className="px-4 py-6 sm:px-8 sm:py-8 max-w-5xl mx-auto space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between flex-wrap gap-4">
         <div>
@@ -167,7 +167,7 @@ export default function AnalyticsPage() {
       <Separator />
 
       {/* KPI cards */}
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {KPI_CARDS.map((kpi) => (
           <Card key={kpi.id}>
             <CardContent className="pt-5 pb-4 px-5">
@@ -191,9 +191,9 @@ export default function AnalyticsPage() {
       </div>
 
       {/* Charts row */}
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
         {/* Weekly applications bar chart — spans 3 cols */}
-        <Card className="col-span-3">
+        <Card className="lg:col-span-3">
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
               Applications by week — Q2 2025
@@ -237,7 +237,7 @@ export default function AnalyticsPage() {
         </Card>
 
         {/* Stage conversion — spans 2 cols */}
-        <Card className="col-span-2">
+        <Card className="lg:col-span-2">
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
               Stage conversion
@@ -263,7 +263,7 @@ export default function AnalyticsPage() {
       </div>
 
       {/* Sources + regions row */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {/* Application sources */}
         <Card>
           <CardHeader className="pb-3">

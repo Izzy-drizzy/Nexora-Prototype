@@ -58,7 +58,7 @@ export default function OfferPage() {
   const status = STATUS_CONFIG[offerStatus];
 
   return (
-    <div className="px-8 py-8 max-w-4xl mx-auto space-y-6">
+    <div className="px-4 py-6 sm:px-8 sm:py-8 max-w-4xl mx-auto space-y-6">
       {/* Breadcrumb */}
       <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
         <Link href="/recruit/candidates" className="hover:text-primary transition-colors">Candidates</Link>
