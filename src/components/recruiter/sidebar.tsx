@@ -142,8 +142,10 @@ export function MobileHeader() {
         <div className="w-7 h-7 rounded-md bg-primary flex items-center justify-center flex-shrink-0">
           <Building2 className="w-3.5 h-3.5 text-white" />
         </div>
-        <span className="text-sm font-bold text-foreground">Nexora</span>
-        <span className="text-[10px] text-muted-foreground font-medium tracking-wide uppercase ml-0.5">Recruit</span>
+        <div>
+          <p className="text-sm font-bold text-foreground leading-none">Nexora</p>
+          <p className="text-[10px] text-muted-foreground font-medium tracking-wide uppercase leading-none mt-0.5">Recruit</p>
+        </div>
       </Link>
     </header>
   );
