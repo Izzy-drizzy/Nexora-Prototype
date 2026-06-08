@@ -138,7 +138,7 @@ export function MobileHeader() {
         </SheetContent>
       </Sheet>
 
-      <Link href="/recruit/dashboard" className="flex items-center gap-2">
+      <Link href="/recruit/dashboard" className="flex items-center gap-2 ml-auto">
         <div className="w-7 h-7 rounded-md bg-primary flex items-center justify-center flex-shrink-0">
           <Building2 className="w-3.5 h-3.5 text-white" />
         </div>

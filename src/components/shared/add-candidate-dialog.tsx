@@ -145,10 +145,10 @@ export function AddCandidateDialog({ open, onOpenChange }: AddCandidateDialogPro
         </div>
 
         <DialogFooter className="gap-2">
-          <Button variant="outline" className="flex-1 h-9" onClick={() => onOpenChange(false)} disabled={loading}>
+          <Button variant="outline" className="flex-1 h-auto py-2.5" onClick={() => onOpenChange(false)} disabled={loading}>
             Cancel
           </Button>
-          <Button className="flex-1 h-9 gap-2" onClick={handleSubmit} disabled={!canSubmit || loading}>
+          <Button className="flex-1 h-auto py-2.5 gap-2" onClick={handleSubmit} disabled={!canSubmit || loading}>
             {loading ? (
               <span className="flex items-center gap-2">
                 <span className="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
