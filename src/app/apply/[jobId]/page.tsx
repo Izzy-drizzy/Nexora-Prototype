@@ -117,7 +117,7 @@ function Step1({
           Tell us a little about yourself.
         </p>
       </div>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-1.5">
           <Label htmlFor="firstName">First name *</Label>
           <Input
@@ -462,7 +462,7 @@ export default function ApplyPage() {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Top bar */}
-      <header className="bg-white border-b px-6 py-4">
+      <header className="bg-white border-b px-4 sm:px-6 py-4">
         <div className="flex items-center gap-2">
           <Building2 className="size-5 text-primary" />
           <span className="font-semibold text-sm text-foreground">
@@ -471,7 +471,7 @@ export default function ApplyPage() {
         </div>
       </header>
 
-      <div className="max-w-5xl mx-auto px-6 py-8">
+      <div className="max-w-5xl mx-auto px-4 py-6 sm:px-6 sm:py-8">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left column: Job details */}
           <div className="lg:w-2/5">

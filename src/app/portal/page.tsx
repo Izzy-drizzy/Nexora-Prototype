@@ -133,7 +133,7 @@ function PipelineStepper({ current }: { current: Stage }) {
 
 export default function PortalPage() {
   return (
-    <div className="max-w-2xl mx-auto py-8 px-6 space-y-6">
+    <div className="max-w-2xl mx-auto py-6 px-4 sm:py-8 sm:px-6 space-y-6">
       {/* Header */}
       <div className="flex items-center gap-4">
         <Avatar size="lg" className="size-12">

@@ -352,7 +352,7 @@ function ContractDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[620px] max-h-[85vh] flex flex-col p-0 overflow-hidden">
         <DialogHeader className="px-6 pt-6 pb-4 border-b shrink-0">
-          <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center justify-between gap-3 flex-wrap">
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                 <FileText className="w-4 h-4 text-primary" />
@@ -450,7 +450,7 @@ export default function OfferPage() {
   const [contractOpen, setContractOpen] = useState(false);
 
   return (
-    <div className="max-w-2xl mx-auto py-8 px-6 space-y-6">
+    <div className="max-w-2xl mx-auto py-6 px-4 sm:py-8 sm:px-6 space-y-6">
       {/* Breadcrumb */}
       <Link
         href="/portal"
@@ -517,7 +517,7 @@ export default function OfferPage() {
             )}
           >
             <Clock className="size-4 text-amber-600 shrink-0" />
-            <div className="flex items-center justify-between flex-1">
+            <div className="flex items-center justify-between flex-1 flex-wrap gap-1">
               <span className="text-amber-800 font-medium">
                 Offer expires {OFFER.expiresDate}
               </span>

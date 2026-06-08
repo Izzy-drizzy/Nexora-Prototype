@@ -9,7 +9,7 @@ export default function PortalLayout({
   return (
     <div className="min-h-screen flex flex-col bg-white">
       {/* Top bar */}
-      <header className="border-b px-6 py-4">
+      <header className="border-b px-4 sm:px-6 py-4">
         <Link
           href="/portal"
           className="inline-flex items-center gap-2 text-primary hover:opacity-80 transition-opacity"
